@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @SpringBootApplication
 @RestController
 public class SpringBootCloudSqlApplication {
@@ -21,7 +25,7 @@ public class SpringBootCloudSqlApplication {
 		SpringApplication.run(SpringBootCloudSqlApplication.class, args);
 	}
 
-	@Autowired repository repo;
+	@Autowired ShowRepository repo;
 
 	@GetMapping("/shows")
 	public List<Show> getAllShows(){
@@ -34,12 +38,14 @@ public class SpringBootCloudSqlApplication {
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Component
+@Entity
+@Table(name = "showtable")
 class Show{
-	private Long id;
+    @Id
+	private Long showid;
 	private String title;
 }
 
 @Repository
-interface repository extends JpaRepository<Show, Long>{}
+interface ShowRepository extends JpaRepository<Show, Long>{}
 
