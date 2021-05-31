@@ -34,6 +34,7 @@ public class SpringBootCloudSqlApplication {
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Component
 class Show{
 	private Long id;
 	private String title;
